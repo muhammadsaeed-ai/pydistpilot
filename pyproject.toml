@@ -1,0 +1,69 @@
+[build-system]
+requires = ["setuptools>=77", "wheel>=0.43"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pydistpilot"
+version = "0.2.0"
+description = "Build, audit, and smoke-test the Python distributions your users actually install."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "PyDistPilot contributors" }]
+keywords = ["python", "python-packaging", "packaging", "wheel", "sdist", "pypi", "release-engineering", "package-verification", "artifact-validation", "smoke-testing", "installed-package-testing", "python-cli", "continuous-integration", "ci-cd", "quality-assurance"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Software Development :: Build Tools",
+  "Topic :: Software Development :: Quality Assurance",
+]
+dependencies = ['tomli>=2; python_version < "3.11"']
+
+[project.urls]
+Homepage = "https://github.com/muhammadsaeed-ai/pydistpilot"
+Repository = "https://github.com/muhammadsaeed-ai/pydistpilot"
+Issues = "https://github.com/muhammadsaeed-ai/pydistpilot/issues"
+
+[project.optional-dependencies]
+build = ["build>=1.2,<2", "setuptools>=77", "wheel>=0.43"]
+dev = ["build>=1.2,<2", "setuptools>=77", "wheel>=0.43", "pytest>=8,<10", "ruff>=0.9,<1", "mypy>=1.13,<2", "twine>=5,<7"]
+
+[project.scripts]
+pydistpilot = "pydistpilot.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pydistpilot]
+imports = ["pydistpilot"]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "B"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+mypy_path = "src"
