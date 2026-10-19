@@ -39,7 +39,16 @@ jobs:
           printf '%s\n' "$listing" | grep -Fx 'pydistpilot/src/pydistpilot/cli.py' >/dev/null
           tar -xzf "$tmp/source.tar.gz" -C "$tmp"
           test -f "$tmp/pydistpilot/README.md"
+          # Preserve the already-installed Actions workflows: the repository token
+          # has contents write permission but not permission to modify workflow files.
+          mkdir -p "$tmp/existing-workflows"
+          if [ -d .github/workflows ]; then
+            cp -a .github/workflows/. "$tmp/existing-workflows/"
+          fi
           cp -a "$tmp/pydistpilot/." .
+          rm -rf .github/workflows
+          mkdir -p .github/workflows
+          cp -a "$tmp/existing-workflows/." .github/workflows/
           rm -rf downloads
           python -m compileall -q src
           git add -A
