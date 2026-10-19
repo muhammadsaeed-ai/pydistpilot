@@ -249,3 +249,9 @@ PyDistPilot is relevant to **Python package verification**, **Python packaging C
 ## License
 
 MIT. See [LICENSE](LICENSE).
+
+## CI and release status
+
+This repository is public and the default branch contains the full PyDistPilot 0.2.0 source tree. The CI badge at the top points to the live GitHub Actions workflow. Do not treat version 0.2.0 as stable until the Python/OS matrix, lint, type checks, distribution metadata checks, and dependency audit complete successfully. Hosted results may differ from local verification; use the workflow run attached to the exact commit you plan to release.
+
+The `publish.yml` workflow is prepared for tag-based PyPI Trusted Publishing, but publication also requires configuring the PyPI Trusted Publisher for this repository and the `pypi` environment. No PyPI publication is implied by the existence of that workflow.
