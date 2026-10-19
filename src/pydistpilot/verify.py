@@ -15,9 +15,6 @@ import zipfile
 import venv
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
-
-from pydistpilot import __version__
 from pydistpilot.archive import ArchiveAuditError, audit_sdist, audit_wheel, extract_sdist_safely
 from pydistpilot.config import ConfigError, load_config
 from pydistpilot.models import ArtifactResult, Finding, SmokeResult, VerificationReport
