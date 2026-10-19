@@ -1,0 +1,52 @@
+name: Materialize full source archive
+
+on:
+  push:
+    paths:
+      - "downloads/PyDistPilot-0.2.0-source.zip"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish-source-tree:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository with write permission
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: true
+      - name: Check for the source archive
+        id: source
+        shell: bash
+        run: |
+          if [ -f "downloads/PyDistPilot-0.2.0-source.zip" ]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Extract and materialize repository files
+        if: steps.source.outputs.present == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          tmp="$(mktemp -d)"
+          unzip -q "downloads/PyDistPilot-0.2.0-source.zip" -d "$tmp"
+          test -d "$tmp/pydistpilot"
+          test -f "$tmp/pydistpilot/pyproject.toml"
+          test -f "$tmp/pydistpilot/src/pydistpilot/cli.py"
+          cp -a "$tmp/pydistpilot/." .
+          rm -f "downloads/PyDistPilot-0.2.0-source.zip"
+          rmdir downloads 2>/dev/null || true
+          python -m compileall -q src
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No repository changes to commit."
+            exit 0
+          fi
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "chore: materialize full PyDistPilot 0.2.0 source tree"
+          git push
+      - name: Explain no-op runs
+        if: steps.source.outputs.present != 'true'
+        run: echo "No source bundle is queued. The workflow is intentionally a no-op after the one-time materialization."
