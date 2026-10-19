@@ -10,7 +10,6 @@ import io
 import re
 import tarfile
 import zipfile
-from collections import Counter
 from email.parser import BytesParser
 from email.policy import compat32
 from pathlib import Path
