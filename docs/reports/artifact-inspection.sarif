@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "runs": [
+    {
+      "properties": {
+        "pydistpilotStatus": "passed"
+      },
+      "results": [],
+      "tool": {
+        "driver": {
+          "name": "PyDistPilot",
+          "rules": [],
+          "semanticVersion": "0.2.0"
+        }
+      }
+    }
+  ],
+  "version": "2.1.0"
+}

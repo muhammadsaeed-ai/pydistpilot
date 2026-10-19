@@ -10,14 +10,14 @@ body:
     id: version
     attributes:
       label: PyDistPilot version
-      placeholder: 0.2.0
+      placeholder: 0.1.0
     validations:
       required: true
   - type: input
     id: python
     attributes:
       label: Python version and implementation
-      placeholder: CPython 3.13
+      placeholder: CPython 3.13.5
     validations:
       required: true
   - type: input

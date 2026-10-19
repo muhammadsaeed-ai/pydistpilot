@@ -48,6 +48,7 @@ package-dir = {"" = "src"}
 where = ["src"]
 
 [tool.pydistpilot]
+# Replace these with the import roots your end users rely on.
 imports = ["pydistpilot"]
 
 [tool.pytest.ini_options]

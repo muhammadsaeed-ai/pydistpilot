@@ -8,7 +8,7 @@ Summarize the behavior and relevant finding/report changes.
 
 ## Verification
 
-- [ ] Tests added or updated
+- [ ] Tests added/updated
 - [ ] `pytest` passes
 - [ ] `ruff check src tests` passes
 - [ ] `mypy src/pydistpilot` passes

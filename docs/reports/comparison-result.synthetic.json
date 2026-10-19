@@ -1,0 +1,25 @@
+{
+  "baseline_status": "passed",
+  "candidate_status": "passed",
+  "command": "compare",
+  "new_issues": [
+    {
+      "code": "PD-DEMO-REGRESSION",
+      "count": 1,
+      "message": "Synthetic fixture: distribution metadata changed unexpectedly.",
+      "severity": "warning"
+    }
+  ],
+  "resolved_issues": [],
+  "schema_version": 1,
+  "status": "failed",
+  "summary": {
+    "baseline_issues": 0,
+    "blocking_new_issues": 1,
+    "candidate_issues": 1,
+    "fail_on_current_failure": false,
+    "new_issues": 1,
+    "resolved_issues": 0
+  },
+  "tool": "pydistpilot"
+}

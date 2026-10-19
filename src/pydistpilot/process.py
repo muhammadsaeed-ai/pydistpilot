@@ -64,7 +64,7 @@ def run_process(
                 remaining = MAX_CAPTURE_BYTES - len(captured)
                 if remaining > 0:
                     captured.extend(chunk[:remaining])
-        except Exception as exc:
+        except Exception as exc:  # propagate reader failures to the caller
             read_error.append(exc)
 
     reader = threading.Thread(target=drain, name="pydistpilot-output-drain", daemon=True)
@@ -80,6 +80,8 @@ def run_process(
             except ProcessLookupError:
                 pass
         else:
+            # On Windows, terminate descendants as well when taskkill is available;
+            # a timed-out build backend may have launched compiler/helper processes.
             try:
                 subprocess.run(
                     ["taskkill", "/PID", str(proc.pid), "/T", "/F"],

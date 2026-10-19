@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68", "wheel>=0.43"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hello-distpilot-example"
+version = "0.1.0"
+description = "A tiny package for demonstrating artifact verification"
+readme = "README.md"
+requires-python = ">=3.10"
+
+[project.scripts]
+hello-distpilot = "hello_pkg.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pydistpilot]
+imports = ["hello_pkg", "hello_pkg.cli"]

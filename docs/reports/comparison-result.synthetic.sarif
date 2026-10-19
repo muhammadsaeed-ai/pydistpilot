@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "runs": [
+    {
+      "properties": {
+        "pydistpilotStatus": "failed"
+      },
+      "results": [
+        {
+          "level": "warning",
+          "message": {
+            "text": "Synthetic fixture: distribution metadata changed unexpectedly."
+          },
+          "partialFingerprints": {
+            "pydistpilot/v1": "79131c048488afb2317c2879994f344b941bf5d99e120552abd72783c016e471"
+          },
+          "properties": {
+            "recommendation": "Review the report and correct the underlying issue."
+          },
+          "ruleId": "PD-DEMO-REGRESSION"
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PyDistPilot",
+          "rules": [
+            {
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "fullDescription": {
+                "text": "Review the report and correct the underlying issue."
+              },
+              "id": "PD-DEMO-REGRESSION",
+              "properties": {
+                "tags": [
+                  "python-packaging",
+                  "release-verification"
+                ]
+              },
+              "shortDescription": {
+                "text": "Synthetic fixture: distribution metadata changed unexpectedly."
+              }
+            }
+          ],
+          "semanticVersion": "0.2.0"
+        }
+      }
+    }
+  ],
+  "version": "2.1.0"
+}

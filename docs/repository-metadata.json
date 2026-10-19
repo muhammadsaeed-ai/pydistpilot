@@ -1,0 +1,66 @@
+{
+  "repository_name": "pydistpilot",
+  "suggested_owner": "muhammadsaeed-ai",
+  "visibility": "public",
+  "description": "Python package release verification CLI: build and inspect wheels and sdists, rebuild from source distributions, and smoke-test installed artifacts locally and in CI.",
+  "homepage": null,
+  "topics": [
+    "python",
+    "python-packaging",
+    "pypi",
+    "python-package",
+    "packaging",
+    "wheel",
+    "sdist",
+    "release-engineering",
+    "continuous-integration",
+    "ci-cd",
+    "devtools",
+    "developer-tools",
+    "open-source",
+    "testing",
+    "software-quality",
+    "software-supply-chain",
+    "package-validation",
+    "github-actions",
+    "command-line-tool",
+    "python-cli"
+  ],
+  "keyword_clusters": {
+    "primary": [
+      "Python package verification",
+      "Python packaging CLI",
+      "Python distribution verification",
+      "wheel and sdist validation"
+    ],
+    "workflow": [
+      "Python package smoke testing",
+      "installed wheel testing",
+      "source distribution rebuild",
+      "release artifact inspection",
+      "PyPI release preflight"
+    ],
+    "audience": [
+      "Python developers",
+      "open-source maintainers",
+      "Python library authors",
+      "release engineers",
+      "CI/CD maintainers"
+    ],
+    "integrations_and_context": [
+      "GitHub Actions",
+      "pytest",
+      "Python build",
+      "wheel metadata",
+      "sdist metadata",
+      "package import checks",
+      "console-script smoke tests"
+    ]
+  },
+  "metadata_notes": [
+    "GitHub supports no more than 20 repository topics; all topics above are purpose-relevant.",
+    "Use natural language in the README and repository description; do not repeat keywords unnaturally or promise traffic outcomes.",
+    "The PyDistPilot package has not been published to PyPI. Repository visibility and publication must be confirmed on GitHub/PyPI rather than inferred from this file."
+  ],
+  "version": "0.2.0"
+}

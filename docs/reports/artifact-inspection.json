@@ -1,0 +1,42 @@
+{
+  "artifacts": [
+    {
+      "console_scripts": [
+        "pydistpilot"
+      ],
+      "distribution": "pydistpilot",
+      "findings": [],
+      "has_errors": false,
+      "imports": [
+        "pydistpilot"
+      ],
+      "kind": "wheel",
+      "path": "pydistpilot-0.2.0-py3-none-any.whl",
+      "sha256": "012116ea532b863b9036a4fbc80dd050887e4572d031626a858b8640784a5bf8",
+      "size_bytes": 37733,
+      "version": "0.2.0"
+    },
+    {
+      "console_scripts": [],
+      "distribution": "pydistpilot",
+      "findings": [],
+      "has_errors": false,
+      "imports": [],
+      "kind": "sdist",
+      "path": "pydistpilot-0.2.0.tar.gz",
+      "sha256": "edbbcace2ff915e83fa55082bbf3375dce0224d83556085686d12489af88ea3f",
+      "size_bytes": 45770,
+      "version": "0.2.0"
+    }
+  ],
+  "findings": [],
+  "schema_version": 1,
+  "status": "passed",
+  "summary": {
+    "artifacts": 2,
+    "errors": 0,
+    "warnings": 0
+  },
+  "tool": "pydistpilot",
+  "tool_version": "0.2.0"
+}

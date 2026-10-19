@@ -1,0 +1,10 @@
+flowchart LR
+  A[Trusted project source] --> B[Build wheel + sdist]
+  B --> C[Static artifact inspection]
+  C --> D[Rebuild wheel from sdist]
+  D --> E[Install wheel in fresh virtual environment]
+  E --> F[Isolated imports + console-script help]
+  F --> G[Findings + JSON report + exit code]
+  G --> H{Error findings?}
+  H -- No --> I[PASS · exit 0]
+  H -- Yes --> J[FAIL · non-zero exit]

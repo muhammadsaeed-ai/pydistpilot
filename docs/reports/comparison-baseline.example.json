@@ -1,0 +1,9 @@
+{
+  "artifacts": [],
+  "findings": [],
+  "schema_version": 1,
+  "smoke_checks": [],
+  "status": "passed",
+  "tool": "pydistpilot",
+  "tool_version": "0.2.0"
+}

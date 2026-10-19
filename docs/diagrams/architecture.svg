@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1010" viewBox="0 0 1440 1010" role="img" aria-labelledby="title desc">
+<title id="title">PyDistPilot system architecture</title><desc id="desc">Layered architecture showing human or CI entrypoints, CLI and configuration, verification engine, bounded subprocess runner and static archive inspector, and local artifacts and reports.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#07111F"/><stop offset="1" stop-color="#0D2038"/></linearGradient>
+<linearGradient id="glow" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#59D7FF"/><stop offset="1" stop-color="#B9A1FF"/></linearGradient>
+<pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M 32 0 L 0 0 0 32" fill="none" stroke="#19314A" stroke-width="0.7" opacity="0.5"/></pattern>
+<filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#000000" flood-opacity="0.22"/></filter>
+</defs>
+<rect width="1440" height="1010" rx="26" fill="url(#bg)"/>
+<rect width="1440" height="1010" rx="26" fill="url(#grid)" opacity="0.78"/>
+<text x="64" y="67" fill="#59D7FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="750" text-anchor="start" letter-spacing="2.5">SYSTEM ARCHITECTURE</text>
+<text x="64" y="112" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="30" font-weight="750" text-anchor="start" >Small, explicit layers. One local verification pipeline.</text>
+<text x="64" y="151" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="450" text-anchor="start" >Python CLI orchestration with safe defaults and evidence-first outputs.</text>
+<rect x="64" y="202" width="1312" height="118" rx="20" fill="#0D1B2D" stroke="#59D7FF" stroke-width="1.5" />
+<text x="88" y="234" fill="#59D7FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="750" text-anchor="start" letter-spacing="1.5">01  ENTRYPOINTS</text>
+<rect x="88.0" y="250" width="410.6666666666667" height="56" rx="13" fill="#12243A" stroke="#263D58" stroke-width="1" />
+<text x="102.0" y="278" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="start" >Terminal CLI</text>
+<text x="102.0" y="302" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="450" text-anchor="start" >pydistpilot verify / inspect</text>
+<rect x="514.6666666666667" y="250" width="410.6666666666667" height="56" rx="13" fill="#12243A" stroke="#263D58" stroke-width="1" />
+<text x="528.6666666666667" y="278" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="start" >Python module</text>
+<text x="528.6666666666667" y="302" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="450" text-anchor="start" >python -m pydistpilot</text>
+<rect x="941.3333333333334" y="250" width="410.6666666666667" height="56" rx="13" fill="#12243A" stroke="#263D58" stroke-width="1" />
+<text x="955.3333333333334" y="278" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="start" >CI workflow</text>
+<text x="955.3333333333334" y="302" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="450" text-anchor="start" >Pull requests and releases</text>
+<rect x="64" y="348" width="1312" height="144" rx="20" fill="#0D1B2D" stroke="#7197FF" stroke-width="1.5" />
+<text x="88" y="380" fill="#7197FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="750" text-anchor="start" letter-spacing="1.5">02  CONTROL PLANE</text>
+<rect x="88.0" y="396" width="410.6666666666667" height="82" rx="13" fill="#12243A" stroke="#263D58" stroke-width="1" />
+<text x="102.0" y="424" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="start" >CLI + config</text>
+<text x="102.0" y="448" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="450" text-anchor="start" >Arguments, TOML, validation</text>
+<rect x="514.6666666666667" y="396" width="410.6666666666667" height="82" rx="13" fill="#12243A" stroke="#263D58" stroke-width="1" />
+<text x="528.6666666666667" y="424" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="start" >Process runner</text>
+<text x="528.6666666666667" y="448" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="450" text-anchor="start" >Timeouts, bounded output</text>
+<rect x="941.3333333333334" y="396" width="410.6666666666667" height="82" rx="13" fill="#12243A" stroke="#263D58" stroke-width="1" />
+<text x="955.3333333333334" y="424" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="start" >Report model</text>
+<text x="955.3333333333334" y="448" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="450" text-anchor="start" >Stable finding codes + status</text>
+<rect x="64" y="520" width="1312" height="216" rx="20" fill="#0D1B2D" stroke="#B9A1FF" stroke-width="1.5" />
+<text x="88" y="552" fill="#B9A1FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="750" text-anchor="start" letter-spacing="1.5">03  VERIFICATION CORE</text>
+<rect x="88.0" y="568" width="304.0" height="154" rx="13" fill="#12243A" stroke="#263D58" stroke-width="1" />
+<text x="102.0" y="596" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="start" >Build pipeline</text>
+<text x="102.0" y="620" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="450" text-anchor="start" >Wheel + source distribution</text>
+<rect x="408.0" y="568" width="304.0" height="154" rx="13" fill="#12243A" stroke="#263D58" stroke-width="1" />
+<text x="422.0" y="596" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="start" >Static inspector</text>
+<text x="422.0" y="620" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="450" text-anchor="start" >Paths, metadata, RECORD hashes</text>
+<rect x="728.0" y="568" width="304.0" height="154" rx="13" fill="#12243A" stroke="#263D58" stroke-width="1" />
+<text x="742.0" y="596" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="start" >Sdist round trip</text>
+<text x="742.0" y="620" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="450" text-anchor="start" >Rebuild wheel from source archive</text>
+<rect x="1048.0" y="568" width="304.0" height="154" rx="13" fill="#12243A" stroke="#263D58" stroke-width="1" />
+<text x="1062.0" y="596" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="start" >Installed smoke tests</text>
+<text x="1062.0" y="620" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="450" text-anchor="start" >Fresh venv, isolated imports, --help</text>
+<rect x="64" y="764" width="1312" height="146" rx="20" fill="#0D1B2D" stroke="#66E3B1" stroke-width="1.5" />
+<text x="88" y="796" fill="#66E3B1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="750" text-anchor="start" letter-spacing="1.5">04  LOCAL OUTPUTS</text>
+<rect x="88.0" y="812" width="410.6666666666667" height="84" rx="13" fill="#12243A" stroke="#263D58" stroke-width="1" />
+<text x="102.0" y="840" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="start" >Artifacts</text>
+<text x="102.0" y="864" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="450" text-anchor="start" >Wheel / sdist / retained builds</text>
+<rect x="514.6666666666667" y="812" width="410.6666666666667" height="84" rx="13" fill="#12243A" stroke="#263D58" stroke-width="1" />
+<text x="528.6666666666667" y="840" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="start" >Evidence</text>
+<text x="528.6666666666667" y="864" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="450" text-anchor="start" >JSON report + concise terminal summary</text>
+<rect x="941.3333333333334" y="812" width="410.6666666666667" height="84" rx="13" fill="#12243A" stroke="#263D58" stroke-width="1" />
+<text x="955.3333333333334" y="840" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="start" >Automation</text>
+<text x="955.3333333333334" y="864" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="450" text-anchor="start" >Exit codes for scripts and CI</text>
+<path d="M720,320 L720,348" fill="none" stroke="#59D7FF" stroke-width="2.5" stroke-linecap="round"/><path d="M715.7,339.0 L720,348 L724.3,339.0" fill="none" stroke="#59D7FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M720,492 L720,520" fill="none" stroke="#59D7FF" stroke-width="2.5" stroke-linecap="round"/><path d="M715.7,511.0 L720,520 L724.3,511.0" fill="none" stroke="#59D7FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M720,736 L720,764" fill="none" stroke="#59D7FF" stroke-width="2.5" stroke-linecap="round"/><path d="M715.7,755.0 L720,764 L724.3,755.0" fill="none" stroke="#59D7FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="720" y="954" fill="#FFBF70" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="750" text-anchor="middle" letter-spacing="2">DEFAULT TRUST MODEL</text>
+<text x="720" y="980" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="550" text-anchor="middle" >No telemetry  ·  No API key  ·  Dependency installation is opt-in</text>
+</svg>

@@ -1,0 +1,36 @@
+flowchart TB
+  subgraph INPUTS[Entry points]
+    TERM[Terminal CLI]
+    MOD[Python module]
+    CI[GitHub Actions / CI]
+  end
+  subgraph CONTROL[Control plane]
+    CLI[CLI orchestration]
+    CFG[Arguments + TOML config]
+    RUN[Bounded subprocess runner]
+    MODEL[Finding and report model]
+  end
+  subgraph CORE[Verification core]
+    BUILD[Build wheel + sdist]
+    STATIC[Static archive inspector]
+    ROUNDTRIP[Rebuild wheel from sdist]
+    SMOKE[Fresh-venv smoke checks]
+  end
+  subgraph OUTPUTS[Local outputs]
+    ART[Build artifacts]
+    JSON[JSON report]
+    EXIT[Exit code + terminal summary]
+  end
+  TERM --> CLI
+  MOD --> CLI
+  CI --> CLI
+  CLI --> CFG --> BUILD
+  BUILD --> STATIC --> ROUNDTRIP --> SMOKE
+  RUN -. bounds execution .-> BUILD
+  RUN -. bounds execution .-> SMOKE
+  STATIC --> MODEL
+  ROUNDTRIP --> MODEL
+  SMOKE --> MODEL
+  MODEL --> JSON
+  MODEL --> EXIT
+  BUILD --> ART

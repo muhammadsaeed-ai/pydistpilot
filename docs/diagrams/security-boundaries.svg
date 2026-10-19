@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="780" viewBox="0 0 1440 780" role="img" aria-labelledby="title desc">
+<title id="title">PyDistPilot trust boundaries and security model</title><desc id="desc">Two modes: static inspection parses artifact contents without executing package code; verification builds packages and imports or invokes their code only for trusted sources, while dependency downloads are opt-in.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#07111F"/><stop offset="1" stop-color="#0D2038"/></linearGradient>
+<linearGradient id="glow" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#59D7FF"/><stop offset="1" stop-color="#B9A1FF"/></linearGradient>
+<pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M 32 0 L 0 0 0 32" fill="none" stroke="#19314A" stroke-width="0.7" opacity="0.5"/></pattern>
+<filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#000000" flood-opacity="0.22"/></filter>
+</defs>
+<rect width="1440" height="780" rx="26" fill="url(#bg)"/>
+<rect width="1440" height="780" rx="26" fill="url(#grid)" opacity="0.78"/>
+<text x="62" y="68" fill="#59D7FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="750" text-anchor="start" letter-spacing="2.5">SECURITY &amp; TRUST BOUNDARIES</text>
+<text x="62" y="114" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="30" font-weight="750" text-anchor="start" >Two modes. Different trust assumptions.</text>
+<text x="62" y="150" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="500" text-anchor="start" >PyDistPilot makes the execution boundary visible instead of hiding it.</text>
+<rect x="62" y="200" width="626" height="390" rx="22" fill="#0D1B2D" stroke="#66E3B1" stroke-width="2" />
+<rect x="88" y="224" width="152" height="30" rx="15" fill="#66E3B118" stroke="#66E3B1" stroke-width="1" /><text x="164.0" y="244" fill="#66E3B1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle" >LOWER-RISK MODE</text>
+<text x="88" y="288" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="34" font-weight="800" text-anchor="start" >inspect</text>
+<text x="88" y="321" fill="#66E3B1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="600" text-anchor="start" >Static artifact inspection</text>
+<text x="94" y="370" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="500" text-anchor="start" >✓  Opens archive metadata and member listings</text>
+<text x="94" y="407" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="500" text-anchor="start" >✓  Checks unsafe paths and archive structure</text>
+<text x="94" y="444" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="500" text-anchor="start" >✓  Reviews wheel metadata and RECORD hashes</text>
+<text x="94" y="481" fill="#66E3B1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="600" text-anchor="start" >×  Does not extract or import package code</text>
+<text x="94" y="536" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="500" text-anchor="start" >Use when you need inspection without execution.</text>
+<rect x="752" y="200" width="626" height="390" rx="22" fill="#0D1B2D" stroke="#FFBF70" stroke-width="2" />
+<rect x="778" y="224" width="170" height="30" rx="15" fill="#FFBF7018" stroke="#FFBF70" stroke-width="1" /><text x="863.0" y="244" fill="#FFBF70" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" text-anchor="middle" >TRUSTED SOURCE ONLY</text>
+<text x="778" y="288" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="34" font-weight="800" text-anchor="start" >verify</text>
+<text x="778" y="321" fill="#FFBF70" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="600" text-anchor="start" >Executes parts of the build/test lifecycle</text>
+<text x="784" y="370" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="500" text-anchor="start" >!  Runs the project build backend</text>
+<text x="784" y="407" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="500" text-anchor="start" >!  Installs candidate wheels in fresh environments</text>
+<text x="784" y="444" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="500" text-anchor="start" >!  Imports configured/discovered modules</text>
+<text x="784" y="481" fill="#FFBF70" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="600" text-anchor="start" >!  Runs console scripts with --help</text>
+<text x="784" y="536" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="500" text-anchor="start" >Use only for source you trust.</text>
+<path d="M688,395 L752,395" fill="none" stroke="#59D7FF" stroke-width="2" stroke-linecap="round"/><path d="M743.0,399.3 L752,395 L743.0,390.7" fill="none" stroke="#59D7FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="62" y="625" width="1316" height="92" rx="16" fill="#12243A" stroke="#7197FF" stroke-width="1.6" />
+<text x="88" y="660" fill="#7197FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="750" text-anchor="start" letter-spacing="1.3">OPT-IN NETWORK / INSTALL ACTIONS</text>
+<text x="88" y="690" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="550" text-anchor="start" >--install-deps and --build-isolation may access package indexes and run installation/build hooks.</text>
+<text x="720" y="754" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="550" text-anchor="middle" >No telemetry  ·  No required AI service  ·  Review reports before sharing</text>
+</svg>

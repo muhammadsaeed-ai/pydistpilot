@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="880" viewBox="0 0 1440 880" role="img" aria-labelledby="title desc">
+<title id="title">PyDistPilot component and repository hierarchy</title><desc id="desc">Repository tree grouped into command-line layer, verification modules, data models, test coverage, docs, and CI configuration.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#07111F"/><stop offset="1" stop-color="#0D2038"/></linearGradient>
+<linearGradient id="glow" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#59D7FF"/><stop offset="1" stop-color="#B9A1FF"/></linearGradient>
+<pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M 32 0 L 0 0 0 32" fill="none" stroke="#19314A" stroke-width="0.7" opacity="0.5"/></pattern>
+<filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#000000" flood-opacity="0.22"/></filter>
+</defs>
+<rect width="1440" height="880" rx="26" fill="url(#bg)"/>
+<rect width="1440" height="880" rx="26" fill="url(#grid)" opacity="0.78"/>
+<text x="62" y="66" fill="#59D7FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="750" text-anchor="start" letter-spacing="2.5">COMPONENT HIERARCHY</text>
+<text x="62" y="111" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="30" font-weight="750" text-anchor="start" >A repository map for contributors.</text>
+<text x="62" y="147" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="500" text-anchor="start" >User-facing surface on top; auditable modules and tests underneath.</text>
+<rect x="520" y="185" width="400" height="70" rx="17" fill="#12243A" stroke="#59D7FF" stroke-width="2" />
+<text x="720" y="215" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22" font-weight="800" text-anchor="middle" >pydistpilot/</text>
+<text x="720" y="239" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" text-anchor="middle" >Project root · pyproject.toml · README · LICENSE</text>
+<path d="M720,255 L720,292" fill="none" stroke="#59D7FF" stroke-width="2.5" stroke-linecap="round"/><path d="M715.7,283.0 L720,292 L724.3,283.0" fill="none" stroke="#59D7FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 172 292 H 1268" fill="none" stroke="#263D58" stroke-width="2"/>
+<path d="M 179.0 292 V 330" fill="none" stroke="#59D7FF" stroke-width="2"/>
+<rect x="54" y="330" width="250" height="72" rx="15" fill="#0D1B2D" stroke="#59D7FF" stroke-width="1.6" />
+<text x="179.0" y="358" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="800" text-anchor="middle" >src/pydistpilot/</text>
+<text x="179.0" y="382" fill="#59D7FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="750" text-anchor="middle" letter-spacing="1.2">CORE PACKAGE</text>
+<rect x="54" y="417" width="250" height="326" rx="14" fill="#091827" stroke="#263D58" stroke-width="1" />
+<circle cx="72" cy="441" r="3.5" fill="#59D7FF"/>
+<text x="85" y="446" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" text-anchor="start" >cli.py</text>
+<circle cx="72" cy="485" r="3.5" fill="#59D7FF"/>
+<text x="85" y="490" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" text-anchor="start" >config.py</text>
+<circle cx="72" cy="529" r="3.5" fill="#59D7FF"/>
+<text x="85" y="534" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" text-anchor="start" >models.py</text>
+<circle cx="72" cy="573" r="3.5" fill="#59D7FF"/>
+<text x="85" y="578" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" text-anchor="start" >process.py</text>
+<circle cx="72" cy="617" r="3.5" fill="#59D7FF"/>
+<text x="85" y="622" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" text-anchor="start" >archive.py</text>
+<circle cx="72" cy="661" r="3.5" fill="#59D7FF"/>
+<text x="85" y="666" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" text-anchor="start" >verify.py</text>
+<circle cx="72" cy="705" r="3.5" fill="#59D7FF"/>
+<text x="85" y="710" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" text-anchor="start" >privacy.py</text>
+<path d="M 475.0 292 V 330" fill="none" stroke="#66E3B1" stroke-width="2"/>
+<rect x="350" y="330" width="250" height="72" rx="15" fill="#0D1B2D" stroke="#66E3B1" stroke-width="1.6" />
+<text x="475.0" y="358" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="800" text-anchor="middle" >tests/</text>
+<text x="475.0" y="382" fill="#66E3B1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="750" text-anchor="middle" letter-spacing="1.2">VERIFICATION</text>
+<rect x="350" y="417" width="250" height="194" rx="14" fill="#091827" stroke="#263D58" stroke-width="1" />
+<circle cx="368" cy="441" r="3.5" fill="#66E3B1"/>
+<text x="381" y="446" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" text-anchor="start" >test_archive.py</text>
+<circle cx="368" cy="485" r="3.5" fill="#66E3B1"/>
+<text x="381" y="490" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" text-anchor="start" >test_config_cli.py</text>
+<circle cx="368" cy="529" r="3.5" fill="#66E3B1"/>
+<text x="381" y="534" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" text-anchor="start" >test_end_to_end.py</text>
+<circle cx="368" cy="573" r="3.5" fill="#66E3B1"/>
+<text x="381" y="578" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" text-anchor="start" >test_privacy_process.py</text>
+<path d="M 771.0 292 V 330" fill="none" stroke="#B9A1FF" stroke-width="2"/>
+<rect x="646" y="330" width="250" height="72" rx="15" fill="#0D1B2D" stroke="#B9A1FF" stroke-width="1.6" />
+<text x="771.0" y="358" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="800" text-anchor="middle" >docs/</text>
+<text x="771.0" y="382" fill="#B9A1FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="750" text-anchor="middle" letter-spacing="1.2">ENGINEERING DOCS</text>
+<rect x="646" y="417" width="250" height="282" rx="14" fill="#091827" stroke="#263D58" stroke-width="1" />
+<circle cx="664" cy="441" r="3.5" fill="#B9A1FF"/>
+<text x="677" y="446" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" text-anchor="start" >architecture.md</text>
+<circle cx="664" cy="485" r="3.5" fill="#B9A1FF"/>
+<text x="677" y="490" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" text-anchor="start" >specification.md</text>
+<circle cx="664" cy="529" r="3.5" fill="#B9A1FF"/>
+<text x="677" y="534" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" text-anchor="start" >security.md</text>
+<circle cx="664" cy="573" r="3.5" fill="#B9A1FF"/>
+<text x="677" y="578" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" text-anchor="start" >research-report.md</text>
+<circle cx="664" cy="617" r="3.5" fill="#B9A1FF"/>
+<text x="677" y="622" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" text-anchor="start" >verification-report.md</text>
+<circle cx="664" cy="661" r="3.5" fill="#B9A1FF"/>
+<text x="677" y="666" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" text-anchor="start" >release.md</text>
+<path d="M 1067.0 292 V 330" fill="none" stroke="#7197FF" stroke-width="2"/>
+<rect x="942" y="330" width="250" height="72" rx="15" fill="#0D1B2D" stroke="#7197FF" stroke-width="1.6" />
+<text x="1067.0" y="358" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="800" text-anchor="middle" >.github/</text>
+<text x="1067.0" y="382" fill="#7197FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="750" text-anchor="middle" letter-spacing="1.2">AUTOMATION</text>
+<rect x="942" y="417" width="250" height="194" rx="14" fill="#091827" stroke="#263D58" stroke-width="1" />
+<circle cx="960" cy="441" r="3.5" fill="#7197FF"/>
+<text x="973" y="446" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" text-anchor="start" >workflows/ci.yml</text>
+<circle cx="960" cy="485" r="3.5" fill="#7197FF"/>
+<text x="973" y="490" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" text-anchor="start" >issue templates</text>
+<circle cx="960" cy="529" r="3.5" fill="#7197FF"/>
+<text x="973" y="534" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" text-anchor="start" >PR template</text>
+<circle cx="960" cy="573" r="3.5" fill="#7197FF"/>
+<text x="973" y="578" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" text-anchor="start" >dependabot.yml</text>
+<path d="M 1313.0 292 V 330" fill="none" stroke="#FFBF70" stroke-width="2"/>
+<rect x="1238" y="330" width="150" height="72" rx="15" fill="#0D1B2D" stroke="#FFBF70" stroke-width="1.6" />
+<text x="1313.0" y="358" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="800" text-anchor="middle" >examples/</text>
+<text x="1313.0" y="382" fill="#FFBF70" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="750" text-anchor="middle" letter-spacing="1.2">SAMPLE</text>
+<rect x="1238" y="417" width="150" height="62" rx="14" fill="#091827" stroke="#263D58" stroke-width="1" />
+<circle cx="1256" cy="441" r="3.5" fill="#FFBF70"/>
+<text x="1269" y="446" fill="#A9BCD2" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" text-anchor="start" >sample_project/</text>
+<text x="720" y="820" fill="#FFBF70" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="750" text-anchor="middle" letter-spacing="2">BOUNDARIES</text>
+<text x="720" y="847" fill="#F4F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="550" text-anchor="middle" >CLI orchestration  →  verification / inspection  →  process isolation  →  findings + reports</text>
+</svg>

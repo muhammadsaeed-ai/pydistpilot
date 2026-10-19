@@ -30,3 +30,16 @@ All notable changes to PyDistPilot are documented here. The format is inspired b
 - Import-root smoke checks and console-script `--help` checks from an empty working directory.
 - JSON report schema version 1, stable finding codes, terminal output, and CI-ready exit codes.
 - Offline/no-dependency install defaults, explicit network-related flags, bounded subprocess output, timeouts, and security documentation.
+- Unit and integration test suites, GitHub Actions CI, contributing/security policy, and release checklist.
+
+### Limitations
+
+- Alpha release; needs validation against a larger set of real packages and platforms.
+- Static inspections do not prove provenance or detect malicious logic.
+- Smoke tests cover only selected import roots and console-script help behavior.
+
+### Documentation follow-up — 19 October 2026
+
+- Added a custom local SVG project banner and diagrams for architecture, end-to-end workflow, component hierarchy, and security boundaries.
+- Added editable Mermaid diagram sources, a JSON diagram catalog, repository SEO/topic metadata, a public-launch checklist, and GitHub publishing instructions.
+- Kept publishing and hosted CI states explicit: no remote repository creation or push is claimed by this source bundle.

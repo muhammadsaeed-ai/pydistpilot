@@ -1,0 +1,74 @@
+{
+  "product": "PyDistPilot",
+  "version": "0.2.0",
+  "purpose": "README-ready visual documentation for architecture, process, hierarchy, and security boundaries.",
+  "diagrams": [
+    {
+      "id": "banner",
+      "file": "../../assets/pydistpilot-banner.svg",
+      "title": "PyDistPilot product banner",
+      "audience": "README landing section",
+      "shows": [
+        "Python release engineering",
+        "wheel and source distribution",
+        "verification report"
+      ]
+    },
+    {
+      "id": "architecture",
+      "file": "architecture.svg",
+      "title": "System architecture",
+      "audience": "Maintainers and technical reviewers",
+      "shows": [
+        "entrypoints",
+        "control plane",
+        "verification core",
+        "local outputs"
+      ]
+    },
+    {
+      "id": "workflow",
+      "file": "workflow.svg",
+      "title": "End-to-end workflow",
+      "audience": "First-time users",
+      "shows": [
+        "source tree",
+        "build",
+        "inspect",
+        "rebuild",
+        "install",
+        "smoke test",
+        "report"
+      ]
+    },
+    {
+      "id": "hierarchy",
+      "file": "hierarchy.svg",
+      "title": "Repository and component hierarchy",
+      "audience": "Contributors",
+      "shows": [
+        "source modules",
+        "tests",
+        "docs",
+        "GitHub automation",
+        "example project"
+      ]
+    },
+    {
+      "id": "security-boundaries",
+      "file": "security-boundaries.svg",
+      "title": "Security and trust boundaries",
+      "audience": "Security reviewers and users",
+      "shows": [
+        "static inspection",
+        "trusted-source verification",
+        "opt-in network and dependency actions"
+      ]
+    }
+  ],
+  "source_formats": {
+    "visual": "SVG",
+    "machine_readable_index": "JSON",
+    "additional_editable_diagram_sources": "Mermaid .mmd"
+  }
+}

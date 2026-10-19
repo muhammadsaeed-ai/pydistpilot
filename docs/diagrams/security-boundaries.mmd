@@ -1,0 +1,9 @@
+flowchart TB
+  A[Artifact input] --> B{Command}
+  B -->|inspect| C[Static parser]
+  C --> D[No extraction, imports, or package execution]
+  B -->|verify| E[Build backend executes]
+  E --> F[Candidate wheel installed]
+  F --> G[Module imports and --help are executed]
+  H[--install-deps / --build-isolation] -. opt-in only .-> E
+  H -. may access package indexes .-> F

@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "runs": [
+    {
+      "properties": {
+        "pydistpilotStatus": "passed"
+      },
+      "results": [
+        {
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "examples/sample_project"
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Using the installed uv CLI as the PEP 517 build frontend."
+          },
+          "partialFingerprints": {
+            "pydistpilot/v1": "ab1607cd5fc950ecfa0fa3e2023f950eff45972656c7beed279b79ef9a8ef98f"
+          },
+          "properties": {
+            "recommendation": "Install pydistpilot[build] to use the preferred 'python -m build' frontend; both paths invoke the declared build backend."
+          },
+          "ruleId": "PD099"
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PyDistPilot",
+          "rules": [
+            {
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "fullDescription": {
+                "text": "Install pydistpilot[build] to use the preferred 'python -m build' frontend; both paths invoke the declared build backend."
+              },
+              "id": "PD099",
+              "properties": {
+                "tags": [
+                  "python-packaging",
+                  "release-verification"
+                ]
+              },
+              "shortDescription": {
+                "text": "Using the installed uv CLI as the PEP 517 build frontend."
+              }
+            }
+          ],
+          "semanticVersion": "0.2.0"
+        }
+      }
+    }
+  ],
+  "version": "2.1.0"
+}

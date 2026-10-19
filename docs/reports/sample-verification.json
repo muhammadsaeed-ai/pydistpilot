@@ -1,0 +1,138 @@
+{
+  "artifacts": [
+    {
+      "console_scripts": [
+        "hello-distpilot"
+      ],
+      "distribution": "hello-distpilot-example",
+      "findings": [],
+      "has_errors": false,
+      "imports": [
+        "hello_pkg"
+      ],
+      "kind": "wheel",
+      "path": "hello_distpilot_example-0.1.0-py3-none-any.whl",
+      "sha256": "072a61eaf265c1f0e3619b16d9c214c4984350401e4ff782644b6e9b036f7dea",
+      "size_bytes": 2305,
+      "version": "0.1.0"
+    },
+    {
+      "console_scripts": [],
+      "distribution": "hello-distpilot-example",
+      "findings": [],
+      "has_errors": false,
+      "imports": [],
+      "kind": "sdist",
+      "path": "hello_distpilot_example-0.1.0.tar.gz",
+      "sha256": "7720427a22cf396779bf1a14409382e6592d37df4041df6f2b7c66c22fc6b653",
+      "size_bytes": 1647,
+      "version": "0.1.0"
+    },
+    {
+      "console_scripts": [
+        "hello-distpilot"
+      ],
+      "distribution": "hello-distpilot-example",
+      "findings": [],
+      "has_errors": false,
+      "imports": [
+        "hello_pkg"
+      ],
+      "kind": "wheel",
+      "path": "hello_distpilot_example-0.1.0-py3-none-any.whl",
+      "sha256": "0dd947fe341981cea748cdb57a5210ca7ae423f8bb9de2927bfa0c96138f7472",
+      "size_bytes": 2305,
+      "version": "0.1.0"
+    }
+  ],
+  "duration_seconds": 10.304,
+  "findings": [
+    {
+      "code": "PD099",
+      "evidence": null,
+      "message": "Using the installed uv CLI as the PEP 517 build frontend.",
+      "path": "examples/sample_project",
+      "recommendation": "Install pydistpilot[build] to use the preferred 'python -m build' frontend; both paths invoke the declared build backend.",
+      "severity": "info"
+    }
+  ],
+  "project": "examples/sample_project",
+  "schema_version": 1,
+  "smoke_checks": [
+    {
+      "artifact": "hello_distpilot_example-0.1.0-py3-none-any.whl",
+      "check": "wheel-install",
+      "duration_seconds": 0.4154205400000137,
+      "message": "Installed into a fresh virtual environment.",
+      "status": "passed",
+      "target": "wheel-0"
+    },
+    {
+      "artifact": "hello_distpilot_example-0.1.0-py3-none-any.whl",
+      "check": "import",
+      "duration_seconds": 0.032802258999936384,
+      "message": "Imported from the installed environment.",
+      "status": "passed",
+      "target": "hello_pkg"
+    },
+    {
+      "artifact": "hello_distpilot_example-0.1.0-py3-none-any.whl",
+      "check": "import",
+      "duration_seconds": 0.03260777500008771,
+      "message": "Imported from the installed environment.",
+      "status": "passed",
+      "target": "hello_pkg.cli"
+    },
+    {
+      "artifact": "hello_distpilot_example-0.1.0-py3-none-any.whl",
+      "check": "console-script",
+      "duration_seconds": 0.03272620400002779,
+      "message": "--help returned exit status 0.",
+      "status": "passed",
+      "target": "hello-distpilot"
+    },
+    {
+      "artifact": "hello_distpilot_example-0.1.0-py3-none-any.whl",
+      "check": "wheel-install",
+      "duration_seconds": 0.41605485000013687,
+      "message": "Installed into a fresh virtual environment.",
+      "status": "passed",
+      "target": "sdist-0"
+    },
+    {
+      "artifact": "hello_distpilot_example-0.1.0-py3-none-any.whl",
+      "check": "import",
+      "duration_seconds": 0.03286829800003943,
+      "message": "Imported from the installed environment.",
+      "status": "passed",
+      "target": "hello_pkg"
+    },
+    {
+      "artifact": "hello_distpilot_example-0.1.0-py3-none-any.whl",
+      "check": "import",
+      "duration_seconds": 0.0642552889999024,
+      "message": "Imported from the installed environment.",
+      "status": "passed",
+      "target": "hello_pkg.cli"
+    },
+    {
+      "artifact": "hello_distpilot_example-0.1.0-py3-none-any.whl",
+      "check": "console-script",
+      "duration_seconds": 0.03280914899983145,
+      "message": "--help returned exit status 0.",
+      "status": "passed",
+      "target": "hello-distpilot"
+    }
+  ],
+  "started_at": "2026-10-19T06:20:08.060571Z",
+  "status": "passed",
+  "summary": {
+    "artifacts": 3,
+    "errors": 0,
+    "smoke_checks": 8,
+    "smoke_failures": 0,
+    "warnings": 0
+  },
+  "tool": "pydistpilot",
+  "tool_version": "0.2.0"
+}

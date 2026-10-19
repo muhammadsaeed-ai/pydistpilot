@@ -1,0 +1,17 @@
+{
+  "artifacts": [],
+  "findings": [
+    {
+      "code": "PD-DEMO-REGRESSION",
+      "message": "Synthetic fixture: distribution metadata changed unexpectedly.",
+      "path": "pyproject.toml",
+      "recommendation": "Review pyproject.toml metadata and the generated wheel/sdist before release.",
+      "severity": "warning"
+    }
+  ],
+  "schema_version": 1,
+  "smoke_checks": [],
+  "status": "passed",
+  "tool": "pydistpilot",
+  "tool_version": "0.2.0"
+}

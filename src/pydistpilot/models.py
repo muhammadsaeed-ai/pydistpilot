@@ -73,13 +73,17 @@ class VerificationReport:
     @property
     def error_count(self) -> int:
         return sum(f.severity == "error" for f in self.findings) + sum(
-            f.severity == "error" for a in self.artifacts for f in a.findings
+            f.severity == "error"
+            for a in self.artifacts
+            for f in a.findings
         ) + sum(s.status == "failed" for s in self.smoke_checks)
 
     @property
     def warning_count(self) -> int:
         return sum(f.severity == "warning" for f in self.findings) + sum(
-            f.severity == "warning" for a in self.artifacts for f in a.findings
+            f.severity == "warning"
+            for a in self.artifacts
+            for f in a.findings
         )
 
     def to_dict(self) -> dict[str, Any]:
