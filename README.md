@@ -4,6 +4,8 @@
 
 **Test the distribution, not just the checkout.**
 
+<p><sub>Built and maintained by <a href="https://verityagent.lovable.app"><strong>VerityAgent</strong></a> · AI agents, automation, and developer tools</sub></p>
+
 <p align="center">
   <img src="assets/readme/progress-loop.gif" alt="Animated workflow indicator for pydistpilot." width="420" />
 </p>
