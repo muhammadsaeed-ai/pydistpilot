@@ -1,0 +1,30 @@
+name: Feature request
+description: Propose a well-scoped workflow improvement.
+title: "feature: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Developer problem
+      description: Describe the repeatable task or failure mode, not just the feature.
+    validations:
+      required: true
+  - type: textarea
+    id: alternative
+    attributes:
+      label: Current workaround / existing tools
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Proposed behavior and acceptance criteria
+    validations:
+      required: true
+  - type: textarea
+    id: security
+    attributes:
+      label: Security, network, and compatibility implications
+    validations:
+      required: false
