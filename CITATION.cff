@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If PyDistPilot helps your work, please cite the project repository."
+title: "PyDistPilot: Python Distribution Verification CLI"
+version: 0.2.0
+type: software
+license: MIT
+repository-code: "https://github.com/muhammadsaeed-ai/pydistpilot"
+abstract: >-
+  A local-first Python command-line tool that builds and inspects wheel and
+  source distributions, rebuilds a wheel from an sdist, smoke-tests installed
+  artifacts in fresh virtual environments, exports SARIF 2.1.0, and compares
+  reports against accepted baselines to detect newly introduced findings.
+keywords:
+  - Python packaging
+  - Wheel validation
+  - Source distributions
+  - Release engineering
+  - Continuous integration
+  - Package smoke tests
