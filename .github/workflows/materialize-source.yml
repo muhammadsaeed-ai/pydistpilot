@@ -34,8 +34,9 @@ jobs:
           test -n "$(find downloads -maxdepth 1 -type f -name 'source.tar.gz.b64.part-*' -print -quit)"
           tmp="$(mktemp -d)"
           cat downloads/source.tar.gz.b64.part-* | base64 --decode > "$tmp/source.tar.gz"
-          tar -tzf "$tmp/source.tar.gz" | grep -q '^pydistpilot/pyproject.toml$'
-          tar -tzf "$tmp/source.tar.gz" | grep -q '^pydistpilot/src/pydistpilot/cli.py$'
+          listing="$(tar -tzf "$tmp/source.tar.gz")"
+          printf '%s\n' "$listing" | grep -Fx 'pydistpilot/pyproject.toml' >/dev/null
+          printf '%s\n' "$listing" | grep -Fx 'pydistpilot/src/pydistpilot/cli.py' >/dev/null
           tar -xzf "$tmp/source.tar.gz" -C "$tmp"
           test -f "$tmp/pydistpilot/README.md"
           cp -a "$tmp/pydistpilot/." .
