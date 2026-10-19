@@ -4,6 +4,10 @@
 
 **Test the distribution, not just the checkout.**
 
+<p align="center">
+  <img src="assets/readme/progress-loop.gif" alt="Animated workflow indicator for pydistpilot." width="420" />
+</p>
+
 PyDistPilot is a local-first Python release-verification CLI. It builds a wheel and source distribution, audits archive paths and package metadata, rebuilds a wheel from the source distribution, then installs built wheels into fresh virtual environments and smoke-tests configured/import-discovered modules and console-script `--help` commands.
 
 It is designed for the gap between “the tests pass in my repository” and “the artifact that users install actually imports and starts.” It complements `pytest`, `build`, `twine`, `check-wheel-contents`, `tox`/`nox`, and provenance/signature tools; it does not replace them.
