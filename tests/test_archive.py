@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-import zipfile
-
 import pytest
 from pathlib import Path
 
