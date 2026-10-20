@@ -496,7 +496,7 @@ def audit_sdist(path: Path) -> ArtifactResult:
                     result.findings.append(Finding("PD042", "error", "Source distribution must contain exactly one root PKG-INFO file.",
                                                    "Rebuild the sdist with valid package metadata.", str(path), f"count={len(zip_pkg_infos)}"))
                 else:
-                    name, version = _parse_metadata(_read_member_limited(archive, zip_pkg_infos[0].filename, MAX_METADATA_SIZE), path, result.findings)
+                    name, version = _parse_metadata(_read_member_limited(zip_archive, zip_pkg_infos[0].filename, MAX_METADATA_SIZE), path, result.findings)
                     result.distribution, result.version = name, version
                 roots = {i.filename.rstrip("/").split("/", 1)[0] for i in zip_infos if i.filename.rstrip("/")}
                 if len(roots) != 1:
