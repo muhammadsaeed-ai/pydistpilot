@@ -76,10 +76,14 @@ def run_process(
     except subprocess.TimeoutExpired:
         timed_out = True
         if os.name == "posix":
-            try:
-                os.killpg(proc.pid, signal.SIGKILL)
-            except ProcessLookupError:
-                pass
+            # Access POSIX-only APIs dynamically so the module also type-checks
+            # on Windows, where os.killpg and signal.SIGKILL are not exposed.
+            kill_process_group = getattr(os, "killpg", None)
+            if callable(kill_process_group):
+                try:
+                    kill_process_group(proc.pid, getattr(signal, "SIGKILL", signal.SIGTERM))
+                except ProcessLookupError:
+                    pass
         else:
             # On Windows, terminate descendants as well when taskkill is available;
             # a timed-out build backend may have launched compiler/helper processes.
