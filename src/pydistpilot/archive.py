@@ -14,7 +14,7 @@ from collections import Counter
 from email.parser import BytesParser
 from email.policy import compat32
 from pathlib import Path
-from typing import BinaryIO, Iterable
+from typing import BinaryIO, Iterable, cast
 
 from pydistpilot.models import ArtifactResult, Finding
 
@@ -169,7 +169,7 @@ def _entry_points(raw: bytes, artifact: Path, findings: list[Finding]) -> list[s
                                 "Regenerate entry_points.txt with a reasonable number of console scripts.", str(artifact)))
         return []
     parser = configparser.ConfigParser(interpolation=None, strict=False)
-    parser.optionxform = str
+    parser.optionxform = str  # type: ignore[method-assign]
     try:
         parser.read_string(raw.decode("utf-8"))
     except (UnicodeDecodeError, configparser.Error) as exc:
@@ -321,7 +321,7 @@ def audit_wheel(path: Path) -> ArtifactResult:
                                                    "Rebuild the wheel or reduce the number of shipped files.", str(path)))
                 else:
                     with archive.open(record_name, "r") as record_handle:
-                        result.findings.extend(_verify_record(record_handle, archive, path, record_name))
+                        result.findings.extend(_verify_record(cast(BinaryIO, record_handle), archive, path, record_name))
             except (OSError, zipfile.BadZipFile, RuntimeError) as exc:
                 result.findings.append(
                     Finding("PD025", "error", "Wheel RECORD could not be read or verified.",
@@ -368,12 +368,12 @@ def _verify_record(
                                     "Rebuild the wheel; every RECORD row must have path, hash, and size columns.",
                                     str(artifact)))
             continue
-        name, digest, size = row
+        name, record_hash, record_size = row
         if not _safe_member_name(name) or name in recorded:
             findings.append(Finding("PD028", "error", "Wheel RECORD contains an unsafe or duplicate path.",
                                     "Rebuild the wheel with unique relative paths in RECORD.", str(artifact), name[:300]))
             continue
-        recorded[name] = (digest, size)
+        recorded[name] = (record_hash, record_size)
     archive_names = {info.filename for info in archive.infolist()}
     payload_names = {info.filename for info in archive.infolist() if not info.is_dir()}
     expected = payload_names - {record_name, record_name + ".jws", record_name + ".p7s"}
@@ -476,29 +476,29 @@ def audit_sdist(path: Path) -> ArtifactResult:
                     result.findings.append(Finding("PD043", "error", "Source distribution does not have exactly one top-level directory.",
                                                    "Rebuild the sdist with the project as one root directory.", str(path), ", ".join(sorted(roots)[:10])))
         elif path.suffix == ".zip":
-            with zipfile.ZipFile(path, "r") as archive:
-                infos = archive.infolist()
-                within_limits = _archive_size_guard(((i.filename, i.file_size) for i in infos), path, result.findings)
-                info_names = [item.filename for item in infos]
+            with zipfile.ZipFile(path, "r") as zip_archive:
+                zip_infos = zip_archive.infolist()
+                within_limits = _archive_size_guard(((i.filename, i.file_size) for i in zip_infos), path, result.findings)
+                info_names = [item.filename for item in zip_infos]
                 duplicates = sorted(name for name, count in Counter(info_names).items() if count > 1)
                 for duplicate in duplicates[:10]:
                     result.findings.append(Finding("PD047", "error", "Source archive contains duplicate member names.",
                                                    "Rebuild the source archive with unique member paths.", str(path), duplicate[:300]))
-                if within_limits and archive.testzip() is not None:
+                if within_limits and zip_archive.testzip() is not None:
                     result.findings.append(Finding("PD044", "error", "Source zip CRC validation failed.",
                                                    "Rebuild the source distribution.", str(path)))
-                pkg_infos = [
-                    i for i in infos
+                zip_pkg_infos = [
+                    i for i in zip_infos
                     if len(i.filename.rstrip("/").split("/")) == 2
                     and i.filename.rstrip("/").split("/")[-1] == "PKG-INFO"
                 ]
-                if len(pkg_infos) != 1:
+                if len(zip_pkg_infos) != 1:
                     result.findings.append(Finding("PD042", "error", "Source distribution must contain exactly one root PKG-INFO file.",
-                                                   "Rebuild the sdist with valid package metadata.", str(path), f"count={len(pkg_infos)}"))
+                                                   "Rebuild the sdist with valid package metadata.", str(path), f"count={len(zip_pkg_infos)}"))
                 else:
-                    name, version = _parse_metadata(_read_member_limited(archive, pkg_infos[0].filename, MAX_METADATA_SIZE), path, result.findings)
+                    name, version = _parse_metadata(_read_member_limited(archive, zip_pkg_infos[0].filename, MAX_METADATA_SIZE), path, result.findings)
                     result.distribution, result.version = name, version
-                roots = {i.filename.rstrip("/").split("/", 1)[0] for i in infos if i.filename.rstrip("/")}
+                roots = {i.filename.rstrip("/").split("/", 1)[0] for i in zip_infos if i.filename.rstrip("/")}
                 if len(roots) != 1:
                     result.findings.append(Finding("PD043", "error", "Source distribution does not have exactly one top-level directory.",
                                                    "Rebuild the sdist with the project as one root directory.", str(path), ", ".join(sorted(roots)[:10])))
@@ -575,8 +575,8 @@ def extract_sdist_safely(path: Path, destination: Path, audit: ArtifactResult) -
             raise ArchiveAuditError(f"archive member size did not match its header: {raw_name[:200]}")
 
     if path.name.endswith((".tar.gz", ".tar.bz2", ".tar.xz", ".tgz")):
-        with tarfile.open(path, mode="r:*") as archive:
-            members = archive.getmembers()
+        with tarfile.open(path, mode="r:*") as tar_archive:
+            members = tar_archive.getmembers()
             # Validate duplicates and every entry type before writing any member.
             names = [member.name for member in members]
             if len(names) != len(set(names)):
@@ -590,14 +590,14 @@ def extract_sdist_safely(path: Path, destination: Path, audit: ArtifactResult) -
                 if member.isdir():
                     write_member(member.name, 0, True, None)
                 elif member.isfile():
-                    stream = archive.extractfile(member)
-                    if stream is None:
+                    tar_stream = tar_archive.extractfile(member)
+                    if tar_stream is None:
                         raise ArchiveAuditError(f"could not read source member: {member.name[:200]}")
-                    with stream:
-                        write_member(member.name, member.size, False, stream)
+                    with tar_stream:
+                        write_member(member.name, member.size, False, cast(BinaryIO, tar_stream))
     elif path.suffix == ".zip":
-        with zipfile.ZipFile(path, "r") as archive:
-            infos = archive.infolist()
+        with zipfile.ZipFile(path, "r") as zip_archive:
+            infos = zip_archive.infolist()
             names = [item.filename for item in infos]
             if len(names) != len(set(names)):
                 raise ArchiveAuditError("source archive contains duplicate member paths")
@@ -613,8 +613,8 @@ def extract_sdist_safely(path: Path, destination: Path, audit: ArtifactResult) -
                 if is_dir:
                     write_member(info.filename, 0, True, None)
                 else:
-                    with archive.open(info, "r") as stream:
-                        write_member(info.filename, info.file_size, False, stream)
+                    with zip_archive.open(info, "r") as zip_stream:
+                        write_member(info.filename, info.file_size, False, cast(BinaryIO, zip_stream))
     else:
         raise ArchiveAuditError("unsupported source distribution format")
 
