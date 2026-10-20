@@ -139,7 +139,6 @@ def _archive_size_guard(infos: Iterable[tuple[str, int]], artifact: Path, findin
 
 def _infer_imports(names: Iterable[str]) -> list[str]:
     all_names = list(names)
-    roots: set[str] = set()
     package_roots = {
         name.split("/", 1)[0]
         for name in all_names
