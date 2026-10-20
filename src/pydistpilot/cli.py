@@ -259,7 +259,7 @@ def _inspect_command(args: argparse.Namespace) -> int:
         print(f"error: could not write inspection report: {exc}", file=sys.stderr)
         return 2
     if args.quiet:
-        print(f"PyDistPilot inspect: {report['status'].upper()} — {errors} error(s), {warnings} warning(s)")
+        print(f"PyDistPilot inspect: {str(report['status']).upper()} — {errors} error(s), {warnings} warning(s)")
     else:
         print(f"\nPyDistPilot static artifact inspection · {report['status'].upper()}")
         for item in results:
