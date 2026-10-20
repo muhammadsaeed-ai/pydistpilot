@@ -169,7 +169,7 @@ def _entry_points(raw: bytes, artifact: Path, findings: list[Finding]) -> list[s
                                 "Regenerate entry_points.txt with a reasonable number of console scripts.", str(artifact)))
         return []
     parser = configparser.ConfigParser(interpolation=None, strict=False)
-    parser.optionxform = str  # type: ignore[method-assign]
+    parser.optionxform = str  # type: ignore[assignment]
     try:
         parser.read_string(raw.decode("utf-8"))
     except (UnicodeDecodeError, configparser.Error) as exc:
