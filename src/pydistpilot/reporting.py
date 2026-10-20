@@ -53,22 +53,23 @@ def _safe_uri(raw_path: object, project_root: Path | None) -> str | None:
     if not isinstance(raw_path, str) or not raw_path.strip():
         return None
     raw = raw_path.strip()
-    # Temporary-workspace placeholders are not valid paths; retain only their basename.
     if raw.startswith("<"):
         raw = raw.rsplit("/", 1)[-1].rstrip(">")
     candidate = Path(raw)
     uri: str
     windows_absolute = bool(re.match(r"^[A-Za-z]:[\\/]", raw) or raw.startswith("\\\\"))
+    posix_absolute = raw.startswith("/") and not windows_absolute
     if windows_absolute and os_name_is_posix():
-        # Reports can be moved across operating systems; don't leak a Windows
-        # user directory when inspected on POSIX.
+        # Reports may move across platforms; don't reveal a Windows user directory.
         uri = PureWindowsPath(raw).name
+    elif posix_absolute and not os_name_is_posix():
+        # On Windows Path('/home/user/...').is_absolute() is False, so detect
+        # POSIX-rooted paths explicitly to prevent local path disclosure.
+        uri = PurePosixPath(raw).name
     elif candidate.is_absolute():
         if project_root is not None:
             try:
-                resolved_root = project_root.resolve()
-                resolved_path = candidate.resolve()
-                relative = resolved_path.relative_to(resolved_root)
+                relative = candidate.resolve().relative_to(project_root.resolve())
                 uri = relative.as_posix()
             except (OSError, ValueError, RuntimeError):
                 uri = candidate.name
@@ -91,8 +92,6 @@ def _safe_uri(raw_path: object, project_root: Path | None) -> str | None:
     if not uri:
         return None
     return quote(uri, safe="/.-_~")
-
-
 def os_name_is_posix() -> bool:
     """Whether the current pathlib implementation is parsing POSIX paths."""
     return Path("/").anchor == "/"
