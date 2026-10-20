@@ -261,7 +261,7 @@ def _inspect_command(args: argparse.Namespace) -> int:
     if args.quiet:
         print(f"PyDistPilot inspect: {str(report['status']).upper()} — {errors} error(s), {warnings} warning(s)")
     else:
-        print(f"\nPyDistPilot static artifact inspection · {report['status'].upper()}")
+        print(f"\nPyDistPilot static artifact inspection · {str(report['status']).upper()}")
         for item in results:
             state = "FAIL" if item.has_errors else "OK"
             print(f"  [{state:4}] {item.kind}: {item.path} ({item.size_bytes:,} bytes)")
