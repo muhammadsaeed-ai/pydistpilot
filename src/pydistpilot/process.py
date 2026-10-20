@@ -52,12 +52,13 @@ def run_process(
         creationflags=(getattr(subprocess, "CREATE_NEW_PROCESS_GROUP", 0) if os.name == "nt" else 0),
     )
     assert proc.stdout is not None
+    stdout = proc.stdout
 
     def drain() -> None:
         nonlocal total_seen
         try:
             while True:
-                chunk = proc.stdout.read(16 * 1024)
+                chunk = stdout.read(16 * 1024)
                 if not chunk:
                     break
                 total_seen += len(chunk)
