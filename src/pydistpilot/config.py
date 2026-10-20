@@ -3,15 +3,15 @@
 from __future__ import annotations
 
 import importlib
+from pathlib import Path
+from typing import Any, cast
 
 # Load TOML support dynamically so static type checking also works when targeting
 # Python 3.10, where the stdlib tomllib module is not available.
 try:
-    tomllib = importlib.import_module("tomllib")
+    tomllib = cast(Any, importlib.import_module("tomllib"))
 except ModuleNotFoundError:  # Python 3.10 compatibility backport
-    tomllib = importlib.import_module("tomli")
-from pathlib import Path
-from typing import Any
+    tomllib = cast(Any, importlib.import_module("tomli"))
 
 
 class ConfigError(ValueError):
