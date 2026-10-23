@@ -36,7 +36,7 @@ Issues = "https://github.com/muhammadsaeed-ai/verity-pydistpilot/issues"
 
 [project.optional-dependencies]
 build = ["build>=1.2,<2", "setuptools>=77", "wheel>=0.43"]
-dev = ["build>=1.2,<2", "setuptools>=77", "wheel>=0.43", "pytest>=8,<10", "ruff>=0.9,<1", "mypy>=1.13,<2", "twine>=5,<7"]
+dev = ["build>=1.2,<2", "setuptools>=77", "wheel>=0.43", "pytest>=8,<10", "ruff>=0.9,<1", "mypy>=2.4.0,<3", "twine>=5,<8"]
 
 [project.scripts]
 pydistpilot = "pydistpilot.cli:main"
